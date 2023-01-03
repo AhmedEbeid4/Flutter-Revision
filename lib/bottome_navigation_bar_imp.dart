@@ -15,7 +15,7 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   int _currentPage = 0;
 
-  void _x1(int index) {
+  void onTapTapped(int index) {
     setState(() {
       _currentPage = index;
     });
