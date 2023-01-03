@@ -15,11 +15,9 @@ class App extends StatelessWidget {
         body: SafeArea(
           child: SizedBox(
             height: 309,
-
-            child: SingleChildScrollView(
-
+            child: ListView(
               scrollDirection: Axis.horizontal,
-              child: Row(
+              children:[ Row(
                 children: [
                   Item(),
                   Item(),
@@ -31,6 +29,7 @@ class App extends StatelessWidget {
                   Item()
                 ],
               )
+              ]
 
 
 
