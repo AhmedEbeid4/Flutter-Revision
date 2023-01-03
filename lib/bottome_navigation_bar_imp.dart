@@ -63,7 +63,7 @@ class _AppState extends State<App> {
           backgroundColor: Colors.blueAccent,
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.black,
-          onTap: _x1,
+          onTap: onTapTapped,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.icecream), label: "A"),
             BottomNavigationBarItem(icon: Icon(Icons.icecream), label: "B"),
