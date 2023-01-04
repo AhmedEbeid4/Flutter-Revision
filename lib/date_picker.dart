@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -14,22 +13,26 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  DateTime? _selectedDate;
+  String? _selectedDate;
+
   void _datePicker() {
-    showDatePicker(context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2020),
-        lastDate: DateTime.now()
-    ).then((value) {
-      if(value == null){
-        return;
-      }else{
-        setState(() {
-          _selectedDate=value;
-        });
-      }
-    })
-    ;
+    DateTime? pickedDate;
+    showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1950),
+            lastDate: DateTime(2100))
+        .then((value) => pickedDate);
+
+    if (pickedDate != null) {
+      print(pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+      String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+      print(
+          formattedDate); //formatted date output using intl package =>  2021-03-16
+      setState(() {
+        _selectedDate = formattedDate; //set output date to TextField value.
+      });
+    }
   }
 
   @override
@@ -39,9 +42,9 @@ class _AppState extends State<App> {
         body: SafeArea(
           child: Center(
             child: MaterialButton(
-              onPressed:  _datePicker
-              ,
-              child: Text(_selectedDate != null ? "$_selectedDate" : "Date Picker"),
+              onPressed: _datePicker,
+              child: Text(
+                  _selectedDate != null ? "$_selectedDate" : "Date Picker"),
             ),
           ),
         ),
